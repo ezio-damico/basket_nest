@@ -179,6 +179,3 @@ void loop() {
     }
 
 }
-
-
-//*Test di prova 6
