@@ -22,9 +22,9 @@ void setup() {
 }
  
 void loop() {
-  if(iniziato2 = true)
+  if(iniziato2 == true)
     tempo = 3600;
-  if(iniziato = true){
+  if(iniziato == true){
     tempo--;
     delay(1000);
   }
