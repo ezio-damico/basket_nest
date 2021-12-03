@@ -5,7 +5,7 @@
 #define tilt 10
 #define buzzer 9
 
-int tempo = 3600; //Secondi durata partita
+int tempo = 30; //Secondi durata partita
 int Time_clock = 0;
 int startMatchTime = 0, endMatchTime = 0;
 int check_tilt = 0;
