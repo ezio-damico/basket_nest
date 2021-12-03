@@ -51,6 +51,7 @@ while(Wire.available()){
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
       lcd.print(player1);
+      lcd.print("ciao");
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
