@@ -6,7 +6,8 @@
 bool iniziato = false;
 bool iniziato2 = false;
 bool controllo = true;
-int tempo = 3600; //durata partita
+int tempo = 30; //durata partita
+int tempo2 = tempo; 
 int Time_clock = 0;
 int startMatchTime = 0, endMatchTime = 0;
 int num = 0;
@@ -23,8 +24,8 @@ void setup() {
 }
  
 void loop() {
-  if(iniziato2 == true && controllo == true)
-    tempo = 3600;
+  if(iniziato2 == true)
+    tempo2--;
   if(iniziato == true){
     tempo--;
     delay(1000);
@@ -66,7 +67,7 @@ while(Wire.available()){
       lcd.setCursor(0, 2);
       lcd.print(player1);
       lcd.print("     Timer:");
-      lcd.print(tempo); //secondi
+      lcd.print(tempo); //secondi player 1
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
@@ -75,7 +76,6 @@ while(Wire.available()){
       lcd.print("Tocca al 1!");
       lcd.setCursor(0,1);
       }
-
       break;
       case 3:
       iniziato2 = true;
@@ -85,7 +85,7 @@ while(Wire.available()){
       lcd.setCursor(0, 2);
       lcd.print(player2);
       lcd.print("     Timer:");
-      lcd.print(tempo); //secondi
+      lcd.print(tempo2); //secondi player 2
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
@@ -94,8 +94,7 @@ while(Wire.available()){
       lcd.print("Tocca al 2!");
       lcd.setCursor(0,1);
       }
-      
-      controllo = false;
+        
       break;
       case 4:
       lcd.clear();
