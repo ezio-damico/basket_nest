@@ -5,6 +5,7 @@
 
 bool iniziato = false;
 bool iniziato2 = false;
+bool controllo = true;
 int tempo = 3600; //durata partita
 int Time_clock = 0;
 int startMatchTime = 0, endMatchTime = 0;
@@ -22,7 +23,7 @@ void setup() {
 }
  
 void loop() {
-  if(iniziato2 == true)
+  if(iniziato2 == true && controllo == true)
     tempo = 3600;
   if(iniziato == true){
     tempo--;
@@ -74,11 +75,12 @@ while(Wire.available()){
       lcd.print("Tocca al 1!");
       lcd.setCursor(0,1);
       }
+      controllo = false;
 
       break;
       case 3:
-      if(player2>0){
       iniziato2 = true;
+      if(player2>0){
       lcd.clear();
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
