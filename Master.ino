@@ -115,9 +115,10 @@ void loop() {
 
         case 2: {
             if (startMatchTime == 0) {
-
                 startMatchTime = Time_clock;
                 endMatchTime = Time_clock + tempo;
+                tone(buzzer, 80, 250);
+                delay(2000);
             }
 
             send_opcode(2);
@@ -133,10 +134,14 @@ void loop() {
 
                     match_status++;
                     startMatchTime = 0;
+                    tone(buzzer, 80, 1000);
+                    delay(2000);
                 } else {
 
                     send_opcode(6);
                     match_status = 6;
+                    tone(buzzer, 80, 2000);
+                    delay(2000);
                 }
             }
             break;
@@ -147,6 +152,8 @@ void loop() {
 
                 startMatchTime = Time_clock;
                 endMatchTime = Time_clock + tempo;
+                tone(buzzer, 80, 250);
+                delay(2000);
             }
 
             send_opcode(3);
@@ -162,6 +169,8 @@ void loop() {
 
                 send_opcode(7);
                 match_status = 7;
+                tone(buzzer, 80, 2000);
+                delay(2000);
             }
             break;
         }            
