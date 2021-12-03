@@ -5,7 +5,7 @@
 #define tilt 10
 #define buzzer 9
 
-int tempo = 3600; //Secondi durata partita
+int tempo = 30; //Secondi durata partita
 int Time_clock = 0;
 int startMatchTime = 0, endMatchTime = 0;
 int check_tilt = 0;
@@ -117,8 +117,8 @@ void loop() {
             if (startMatchTime == 0) {
                 startMatchTime = Time_clock;
                 endMatchTime = Time_clock + tempo;
-                tone(buzzer, 80, 250);
-                delay(2000);
+                tone(buzzer, 250, 250);delay(300);
+                tone(buzzer, 250, 250);delay(300);
             }
 
             send_opcode(2);
@@ -134,14 +134,12 @@ void loop() {
 
                     match_status++;
                     startMatchTime = 0;
-                    tone(buzzer, 80, 1000);
-                    delay(2000);
+                    tone(buzzer, 80, 2000); delay(2000);
                 } else {
 
                     send_opcode(6);
                     match_status = 6;
                     tone(buzzer, 80, 2000);
-                    delay(2000);
                 }
             }
             break;
@@ -152,8 +150,8 @@ void loop() {
 
                 startMatchTime = Time_clock;
                 endMatchTime = Time_clock + tempo;
-                tone(buzzer, 80, 250);
-                delay(2000);
+                tone(buzzer, 250, 250);delay(300);
+                tone(buzzer, 250, 250);delay(300);
             }
 
             send_opcode(3);
@@ -170,7 +168,6 @@ void loop() {
                 send_opcode(7);
                 match_status = 7;
                 tone(buzzer, 80, 2000);
-                delay(2000);
             }
             break;
         }            
