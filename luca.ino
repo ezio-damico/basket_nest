@@ -55,7 +55,7 @@ while(Wire.available()){
       lcd.clear();
       lcd.print("Scegli il numero");
       lcd.setCursor(0, 2);
-      lcd.print("di giocatori (1/2)");
+      lcd.print("Giocatori (1/2)");
       lcd.setCursor(0,1);
       break;
       case 2:
@@ -116,7 +116,7 @@ while(Wire.available()){
       lcd.clear();
       lcd.print("Tempo Finito");
       lcd.setCursor(0, 2);
-      lcd.print("Punttegio:");
+      lcd.print("Punteggio:");
        lcd.setCursor(11, 2);
        lcd.print(player1);
       lcd.setCursor(0,1);
