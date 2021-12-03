@@ -9,7 +9,7 @@ int startMatchTime = 0, endMatchTime = 0;
 int check_tilt = 0;
 int bottone = 0, bottone2 = 0;
 //long durata = 0, cm = 0;
-int one_state = 0, two_state = 0;
+int one_state = 0, two_state = 0; //per rilevare se bottone one e two    sono premuti o rilasciati
 int which_player = 0; //se = 0 --> nessun giocatore selezionato|
 int match_status = 0; /* se = 0 --> premi un bottone per iniziare
                          se = 1 --> scegli un numero di giocatori
@@ -55,7 +55,6 @@ int button_check() {
 void send_opcode(int op) {
 
     Wire.beginTransmission(4);
-
     Wire.write(op);
     Wire.endTransmission();
 }
@@ -74,29 +73,26 @@ void loop() {
 
     Time_clock = (millis() / 1000);
     Serial.println(Time_clock);
-//Serial.println(match_status);
+    //Serial.println(match_status);
+    
     switch (match_status) {
-        case 0: {
 
+        case 0: {
             send_opcode(0);
             int r = button_check();
             switch (r) {
-
                 case 1:
                 case 2:
                     match_status++;
                     delay(1000);
             }
-
             break;
         }
 
         case 1: {
             send_opcode(1);
             int r = button_check();
-
             switch (r) {
-
                 case 1: {
                     which_player = 1;
                     match_status++;
@@ -107,7 +103,6 @@ void loop() {
                 case 2: {
                     which_player = 2;
                     match_status++;
-
                     delay(1000);
                     break;
                 }
@@ -125,12 +120,10 @@ void loop() {
             send_opcode(2);
             int val = digitalRead(tilt);
             if (val == HIGH) {
-
                 send_opcode(4);
-
                 delay(2000);
-
             }
+
             if (Time_clock >= endMatchTime) {
                 if (which_player == 2) {
 
@@ -140,12 +133,9 @@ void loop() {
 
                     send_opcode(6);
                     match_status = 6;
-
                 }
-
             }
             break;
-
         }
 
         case 3: {
@@ -161,21 +151,14 @@ void loop() {
             if (val == HIGH) {
 
                 send_opcode(5);
-
                 delay(2000);
-
             }
             if (Time_clock >= endMatchTime) {
 
                 send_opcode(7);
                 match_status = 7;
-
             }
             break;
-
-        }
-            
-
+        }            
     }
-
 }
