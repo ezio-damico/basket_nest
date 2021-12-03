@@ -3,6 +3,7 @@
 #define one_player 8
 #define two_player 7
 #define tilt 10
+#define buzzer 9
 
 int Time_clock = 0;
 int startMatchTime = 0, endMatchTime = 0;
@@ -67,6 +68,7 @@ void setup() {
     pinMode(two_player, INPUT);
     pinMode(tilt, INPUT);
     digitalWrite(tilt, HIGH);
+    pinMode(buzzer, OUTPUT);
 }
 
 void loop() {
@@ -121,6 +123,7 @@ void loop() {
             int val = digitalRead(tilt);
             if (val == HIGH) {
                 send_opcode(4);
+                tone(buzzer, 80, 1000);
                 delay(2000);
             }
 
@@ -142,7 +145,7 @@ void loop() {
             if (startMatchTime == 0) {
 
                 startMatchTime = Time_clock;
-                endMatchTime = Time_clock + 3600;
+                endMatchTime = Time_clock + 3600 3;
             }
 
             send_opcode(3);
@@ -151,6 +154,7 @@ void loop() {
             if (val == HIGH) {
 
                 send_opcode(5);
+                tone(buzzer, 80, 1000);
                 delay(2000);
             }
             if (Time_clock >= endMatchTime) {
