@@ -75,7 +75,6 @@ while(Wire.available()){
       lcd.print("Tocca al 1!");
       lcd.setCursor(0,1);
       }
-      controllo = false;
 
       break;
       case 3:
@@ -95,6 +94,8 @@ while(Wire.available()){
       lcd.print("Tocca al 2!");
       lcd.setCursor(0,1);
       }
+      
+      controllo = false;
       break;
       case 4:
       lcd.clear();
