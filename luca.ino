@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bool iniziato = false;
+bool iniziato2 = false;
+int tempo = 3600; //durata partita
+int Time_clock = 0;
+int startMatchTime = 0, endMatchTime = 0;
 int num = 0;
 int player1 = 0, player2 = 0; 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
@@ -17,6 +22,13 @@ void setup() {
 }
  
 void loop() {
+  if(iniziato2 = true)
+    tempo = 3600;
+  if(iniziato = true){
+    tempo--;
+    delay(1000);
+  }
+  Time_clock = (millis() / 1000);
   delay(100);
   lcd.setCursor(0,1);
 }
@@ -45,13 +57,15 @@ while(Wire.available()){
       lcd.setCursor(0,1);
       break;
       case 2:
+      iniziato = true;
       if(player1>0){
 
       lcd.clear();
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
       lcd.print(player1);
-      lcd.print("ciao");
+      lcd.print("     Timer:");
+      lcd.print(tempo); //secondi
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
@@ -64,11 +78,13 @@ while(Wire.available()){
       break;
       case 3:
       if(player2>0){
-
+      iniziato2 = true;
       lcd.clear();
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
       lcd.print(player2);
+      lcd.print("     Timer:");
+      lcd.print(tempo); //secondi
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
