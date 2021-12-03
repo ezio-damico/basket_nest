@@ -2,6 +2,7 @@
 #include <Wire.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 int num = 0;
 int player1 = 0, player2 = 0; 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 

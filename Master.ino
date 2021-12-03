@@ -152,7 +152,7 @@ void loop() {
             if (startMatchTime == 0) {
 
                 startMatchTime = Time_clock;
-                endMatchTime = Time_clock + 3600 3;
+                endMatchTime = Time_clock + 3600;
             }
 
             send_opcode(3);
