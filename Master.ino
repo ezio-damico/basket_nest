@@ -114,14 +114,14 @@ void loop() {
         }
 
         case 2: {
+            send_opcode(2);
             if (startMatchTime == 0) {
                 startMatchTime = Time_clock;
                 endMatchTime = Time_clock + tempo;
                 tone(buzzer, 250, 250);delay(300);
                 tone(buzzer, 250, 250);delay(300);
             }
-
-            send_opcode(2);
+            
             int val = digitalRead(tilt);
             if (val == HIGH) {
                 send_opcode(4);
@@ -146,6 +146,7 @@ void loop() {
         }
 
         case 3: {
+            send_opcode(3);
             if (startMatchTime == 0) {
 
                 startMatchTime = Time_clock;
@@ -153,8 +154,6 @@ void loop() {
                 tone(buzzer, 250, 250);delay(300);
                 tone(buzzer, 250, 250);delay(300);
             }
-
-            send_opcode(3);
             int val = digitalRead(tilt);
 
             if (val == HIGH) {

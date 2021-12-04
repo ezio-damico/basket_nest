@@ -1,6 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "programmer": "arduino:arduinoisp",
     "port": "/dev/cu.usbmodem14201",
-    "sketch": "Master.ino"
+    "sketch": "luca.ino"
 }

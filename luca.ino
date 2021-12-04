@@ -18,14 +18,18 @@ void setup() {
   Wire.begin(4);
   Wire.onReceive(receiveEvent);
   Serial.begin(9600);
-   //impostiamo il numero di colonne ed il numero di righe di lcd  
   lcd.clear();
   lcd.begin(16, 2);
 }
  
+
+
 void loop() {
-  if(iniziato2 == true)
+  if(iniziato2 == true){
     tempo2--;
+    delay(1000);
+  }
+    
   if(iniziato == true){
     tempo--;
     delay(1000);
@@ -37,11 +41,13 @@ void loop() {
 int old=-1;
 void receiveEvent(int howMany){
 
+int tmp=-2;
   
 while(Wire.available()){
   
     num = Wire.read();
-    if(old!=num){
+  
+    if((old!=num)){
 
     switch(num){
       case 0:
@@ -59,6 +65,7 @@ while(Wire.available()){
       lcd.setCursor(0,1);
       break;
       case 2:
+  
       iniziato = true;
       if(player1>0){
 
