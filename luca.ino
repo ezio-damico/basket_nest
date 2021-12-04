@@ -8,12 +8,16 @@ bool iniziato2 = false;
 bool controllo = true;
 int tempo = 30; //durata partita
 int tempo2 = tempo; 
-int Time_clock = 0;
+int Time_clock = 0, start, end;
 int startMatchTime = 0, endMatchTime = 0;
 int num = 0;
 int player1 = 0, player2 = 0; 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
-  
+int  Time_clock;
+bool firstTimePlayer1 =true;
+bool firstTimePlayer2 =true;
+
+
 void setup() {
   Wire.begin(4);
   Wire.onReceive(receiveEvent);
@@ -25,6 +29,8 @@ void setup() {
 
 
 void loop() {
+    
+    TimeClock = (millis() / 1000);
 
 }
 
@@ -32,14 +38,16 @@ int old=-1;
 void receiveEvent(int howMany){
 
 int tmp=-2;
-  
+  int currentime=30;
 while(Wire.available()){
-  
+
+    currenttime= end-Time_clock;
+
     num = Wire.read();
       if(iniziato2 == true){
       lcd.setCursor(0, 2);
       lcd.print("     Timer:");
-      lcd.print(tempo2); //secondi player 1
+      lcd.print(currentime); //secondi player 1
       lcd.setCursor(0,1);
       }
   
@@ -61,7 +69,13 @@ while(Wire.available()){
       lcd.setCursor(0,1);
       break;
       case 2:
-  
+  if(firstTimePlayer1){
+
+      firstTimePlayer1=!firstTimePlayer1;
+      start= Time_clock;
+      end= Time_clock+ tempo;
+
+  }
       iniziato = true;
       if(player1>0){
 
@@ -79,6 +93,13 @@ while(Wire.available()){
       }
       break;
       case 3:
+          if(firstTimePlayer2){
+
+      firstTimePlayer2=!firstTimePlayer2;
+      start= Time_clock;
+      end= Time_clock+ tempo;
+
+  }
       iniziato2 = true;
       if(player2>0){
       lcd.clear();
