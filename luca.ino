@@ -25,19 +25,9 @@ void setup() {
 
 
 void loop() {
-  if(iniziato2 == true){
-    tempo2--;
-    delay(1000);
-  }
-    
-  if(iniziato == true){
-    tempo--;
-    delay(1000);
-  }
-  Time_clock = (millis() / 1000);
-  delay(100);
-  lcd.setCursor(0,1);
+
 }
+
 int old=-1;
 void receiveEvent(int howMany){
 
@@ -46,8 +36,14 @@ int tmp=-2;
 while(Wire.available()){
   
     num = Wire.read();
+      if(iniziato2 == true){
+      lcd.setCursor(0, 2);
+      lcd.print("     Timer:");
+      lcd.print(tempo2); //secondi player 1
+      lcd.setCursor(0,1);
+      }
   
-    if((old!=num)){
+    if(old!=num){
 
     switch(num){
       case 0:
@@ -73,8 +69,6 @@ while(Wire.available()){
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
       lcd.print(player1);
-      lcd.print("     Timer:");
-      lcd.print(tempo); //secondi player 1
       lcd.setCursor(0,1);
       }else{
       lcd.clear();
@@ -91,8 +85,6 @@ while(Wire.available()){
       lcd.print("Punteggio:");
       lcd.setCursor(0, 2);
       lcd.print(player2);
-      lcd.print("     Timer:");
-      lcd.print(tempo2); //secondi player 2
       lcd.setCursor(0,1);
       }else{
       lcd.clear();

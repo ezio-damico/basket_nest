@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "port": "/dev/cu.usbmodem14201",
+    "port": "/dev/cu.Bluetooth-Incoming-Port",
     "sketch": "luca.ino"
 }
